@@ -16,7 +16,7 @@ public class DataBase
         dataSource.setUsername("root");
         dataSource.setPassword("yearup26");
 
-        String sql = "SELECT ProductName FROM products";
+        String sql = "SELECT ProductName, UnitPrice FROM products";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery())

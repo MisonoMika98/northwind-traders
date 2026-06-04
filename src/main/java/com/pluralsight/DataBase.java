@@ -16,32 +16,30 @@ public class DataBase
         dataSource.setUsername("root");
         dataSource.setPassword("yearup26");
 
-        String sql = "SELECT ProductName, UnitPrice FROM products";
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery())
-        {
+        String scuffedHeader = " Id   Name    Price    Stock";
+        String scuffedHeader2 = "--|---------|-------|---------";
+        System.out.println(scuffedHeader);
+        System.out.println(scuffedHeader2);
 
+        String sql = "SELECT ProductId, ProductName, UnitPrice, UnitsInStock FROM products";
+        try (Connection conn = dataSource.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery())
+        {
             while (rs.next())
             {
 
+                int productId = rs.getInt("ProductId");
                 String name = rs.getString("ProductName");
                 double price = rs.getDouble("UnitPrice");
-                System.out.printf("%s: $%.2f%n", name, price);
+                double unitsInStock = rs.getDouble("UnitsInStock");
 
-
+                System.out.printf("%d %s: $%.2f %.2f%n", productId, name, price, unitsInStock);
 
             }
-
         }
 
         catch (SQLException e)
         {
-
             e.printStackTrace();
-
         }
     }
-
-
 }

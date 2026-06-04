@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DataBase
 {
-    static Scanner userInput = new Scanner(System.in);
+    private static Scanner userInput = new Scanner(System.in);
 
 
     public static void homeScreen()
@@ -76,7 +76,7 @@ public class DataBase
                 double price = rs.getDouble("UnitPrice");
                 double unitsInStock = rs.getDouble("UnitsInStock");
 
-                System.out.printf("%d %s: $%.2f %.2f%n", productId, name, price, unitsInStock);
+                System.out.printf("%d | %s: $%.2f | %.2f%n", productId, name, price, unitsInStock);
 
             }
         }
@@ -113,7 +113,7 @@ public class DataBase
                 String country = rs.getString("Country");
                 String phoneNumber = rs.getString("Phone");
 
-                System.out.printf("%s| %s| %s| %s| %s%n", contactName, companyName, city, country, phoneNumber);
+                System.out.printf("%s | %s | %s | %s | %s%n", contactName, companyName, city, country, phoneNumber);
 
             }
         }
